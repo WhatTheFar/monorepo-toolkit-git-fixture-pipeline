@@ -17,5 +17,5 @@ jobs:
 
       - name: Build
         run: |
-          echo Build pass...
-          exit 0
+          echo Build failed...
+          exit 1
