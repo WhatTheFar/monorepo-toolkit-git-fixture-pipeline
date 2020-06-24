@@ -1,0 +1,20 @@
+on:
+  repository_dispatch:
+    types: [build]
+
+name: Dispatch build
+
+jobs:
+  build-server:
+    name: Build server
+    if: github.event.client_payload.job == 'server'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Build
+        run: |
+          echo Building an app...
+          sleep 5
+          echo Build passed
