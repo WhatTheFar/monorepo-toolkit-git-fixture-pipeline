@@ -1,0 +1,19 @@
+on:
+  repository_dispatch:
+    types: [build-kill]
+
+name: Dispatch build to be killed
+
+jobs:
+  build-server:
+    name: Build server
+    if: github.event.client_payload.job == 'server'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Build
+        run: |
+          echo Waiting to be killed
+          sleep 100
